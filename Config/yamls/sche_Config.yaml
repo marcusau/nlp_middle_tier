@@ -1,0 +1,29 @@
+lifestyle:
+  articles:
+    Dayback_minutes: '120'
+    day_of_week: mon-sun
+    hour: 08-21
+    id: get_lifestyle_article
+    minute: '*/5'
+    trigger: cron
+  category:
+    day_of_week: mon-fri
+    hour: 08
+    id: get_lifestyle_category
+    minute: '05'
+    trigger: cron
+  section:
+    day_of_week: mon-fri
+    hour: 08
+    id: get_section_category
+    minute: '05'
+    trigger: cron
+financial_news:
+  articles:
+    Dayback_minutes: '60'
+    day_of_week: mon-fri
+    hour: 07-21
+    id: get_news_articles
+    minute: '*/1'
+    trigger: cron
+

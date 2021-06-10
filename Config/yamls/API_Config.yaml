@@ -1,0 +1,24 @@
+host: 10.1.8.11
+port: '8000'
+routine:
+  root: '/nlp_backend'
+  ner:
+    main: '/ner/main'
+    simple: '/ner/simple'
+  seg:
+    cut: '/seg/cut'
+    pseg: '/seg/pseg'
+    addword: '/seg/addword'
+  fuzz:
+    word_sim: '/fuzz/wordsim'
+    words_sim: '/fuzz/wordssim'
+    check_dupe: '/fuzz/checkdupe'
+    dedupe: '/fuzz/dedupe'
+  w2v:
+    v2v_sim: '/w2v/v2vsim'
+    words_sim: '/w2v/wordssim'
+    word_mostsim: '/w2v/words_topsim'
+    word_topn: '/w2v/topn'
+    wordtovec: '/w2v/tovec'
+    check_dupe: '/w2v/checkdupe'
+    dedupe: '/w2v/dedupe'

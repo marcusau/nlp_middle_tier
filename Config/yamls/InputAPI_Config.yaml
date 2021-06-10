@@ -1,0 +1,33 @@
+stocknames:
+  HK:
+    Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=1&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
+    Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=1&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
+  Shanghai:
+    Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=9&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
+    Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=9&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
+  Shenzhen:
+    Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
+    Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
+
+lifestyle:
+  urls:
+    articles: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=latest
+    category: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=catinfo
+    single_article: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=art&id=
+    master: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?
+    section: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=menu
+  params:
+    articles: latest
+    category: catinfo
+    single_article: art
+    section: menu
+
+news:
+  urls:
+    content:
+      byID: http://10.200.21.82/NewsServer/NGNSHelper/GetNewsContent.do?reqid=2002j&newsid={}&lang=TC
+    Thumbnail:
+      byTime: http://10.200.23.218/NewsThumbnails/embed/GetNews.do?reqid=2000j&lang=TC&type=N%7CF%7CC&newsdatefrom={}&newsdateto={}&updonfrom={}&updonto={}&packagecd=FV32&limitno={}
+      byID : http://10.200.23.218/NewsThumbnails/embed/GetNews.do?reqid=2000j&lang=TC&type=N%7CF%7CC&newsid={}
+  params:
+    limitno: '1000'

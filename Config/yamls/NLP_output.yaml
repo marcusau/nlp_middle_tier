@@ -1,0 +1,44 @@
+news:
+  word_weights:
+    label: 0.3
+    len: 0.25
+    headline: 0.3
+    span:  0.15
+  topK: 12
+  topN: 500
+  verbose: False
+  sche:
+    dayback: 180
+    recur_limit : 500
+    trigger: 'cron'
+    day_of_week: 'mon-fri'
+    hour: '07-21'
+    minute: '*/1'
+    name: 'vectorize-news'
+  cache:
+    nonvec: 2000
+    vec: 30000
+    fail: 100
+
+lifestyle:
+  word_weights:
+    label: 0.2
+    len: 0.2
+    title: 0.2
+    intro: 0.2
+    span: 0.2
+  topK: 12
+  topN: 100
+  verbose: False
+  sche:
+    dayback: 185
+    recur_limit: 100
+    trigger: 'cron'
+    day_of_week: 'mon-sun'
+    hour: '07-21'
+    minute: '*/1'
+    name: 'vectorize-lifestyle'
+  cache:
+      nonvec: 200
+      vec: 4000
+      fail: 100

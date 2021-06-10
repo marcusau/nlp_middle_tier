@@ -1,0 +1,48 @@
+host: 10.1.8.19
+password: abcd1234
+port: '3306'
+user: root
+nlp_engine:
+  schema: nlp_engine
+  tables:
+    util:
+      NameEntity_type : ner_type
+      pos: pos_type
+    vocab:
+      stocknames : stocknames
+      NameEntites : name_entity
+      stopwords : stopwords
+
+news:
+  schema: financial_news
+  tables:
+    articles : articles
+    category : category
+    topic: topic
+    embeddings: embeddings
+    name_entity_scores: nertype_score
+    related_articles: related_articles
+    related_category : related_category
+    related_keywords : related_keywords
+    vecfilter:
+      categoryCd: vec_categorycd
+      topic: vec_topic
+      topicID: vec_topicid
+      words: vec_words
+
+lifestyle:
+  schema: lifestyle
+  tables:
+    articles : articles
+    section : section
+    category : category
+    related_category : related_category
+    tortags: tortags
+    tortags_tags: tortags_tags
+    related_articles: related_articles
+    related_keywords: related_keywords
+    embeddings: embeddings
+    name_entity_scores: nertype_score
+    vecfilter:
+      catid: vec_catid
+      words: vec_words
