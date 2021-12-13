@@ -7,6 +7,13 @@
 ![](pic/nlp_workflow.jpg)
 
 
+### structure of project
+- [Config folder](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/Config)
+- [financial_news](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/financial_news)
+- [lifestyle](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/lifestyle)
+- [nlp_backend_engine.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/nlp_backend_engine.py)
+- [tools.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/tools.py) and [sql_db.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/sql_db.py)  
+
  
 # 1. Data Retrieval (schedulers)
 
