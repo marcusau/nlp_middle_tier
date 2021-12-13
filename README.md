@@ -37,3 +37,26 @@
      stocknames   : http://10.1.8.158/StreamServer/SortSearchServlet?reqID=6&category={}&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,{}
      themenames   : http://10.1.8.10:5001/app2app/themedetails  
 > note: for external API of themenames, the pre-requisite is the kick-start of running of theme_details.py from   [app2app_web module](https://github.com/etnetapp-dev/app2app_web)
+
+
+
+Script directory in development server:  /opt/etnet/app2app/text_processing/theme_articles_mapping/
+
+### 4.2. Direct run command : 
+     python3.7  /opt/etnet/app2app/text_processing/theme_articles_mapping/api_scheduler.py
+     python3.7   <folder path>/text_processing/theme_articles_mapping/api_scheduler.py
+
+### 4.3.Service run command
+#### 4.3.1   create and edit “app2app-theme-mapping.service” script
+     vim /opt/etnet/scripts/ app2app-theme-mapping.service
+![](demo_configs/app2app_theme_mapping.png)     
+Note: mainly input “direct run command” in between start) and exit $?
+
+#### 4.3.2. create and edit “app2app-theme-mapping.service” in “/usr/lib/systemd/system/” folder
+     vim /usr/lib/systemd/system/ app2app-theme-mapping.service 
+![](demo_configs/app2app_theme_mapping_service.png)   
+Note: mainly paste the directory of “app2app-theme-mapping.service” of step2.1 into the .service file
+
+
+#### 4.3.3  run the .service in the background with “systemctl start” command
+     systemctl start app2app-theme-mapping.service
