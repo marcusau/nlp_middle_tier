@@ -7,7 +7,7 @@
 ![](pic/nlp_workflow.jpg)
 
 
-### structure of project
+# structure of project
 - [Config](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/Config) - stores configuation of the project in [yaml files](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/Config/yamls) and contains scripts to convert configuration into reusable python objects.
 - [financial_news](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/financial_news) - contains [ETL](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/financial_news/ETL) for data retrival of etnet financial news and [output_API](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/financial_news/output_API) to perform NLP application to news data
 - [lifestyle](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/lifestyle) - contains [ETL](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/lifestyle/ETL) for data retrival of lifestyle articles and [output_API](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/flifestyle/output_API) to perform NLP application to lifestyle textual data
@@ -16,7 +16,7 @@
 
 
 
-## Structure of financial_news and lifestyle module
+# Structure of financial_news and lifestyle module
     - ETL
          input_api.py  (provide in-built functions to call external API for data retrival)
          sql_query.py (provide python-based CRUD functions to communicate with SQL database)
@@ -32,7 +32,7 @@
          
          
 
-#### External APIs of data: all are stored in [InputAPI_Config.yaml](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/Config/yamls/InputAPI_Config.yaml)
+# External APIs of data: all are stored in [InputAPI_Config.yaml](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/Config/yamls/InputAPI_Config.yaml)
     news:
         content:
             byID: http://10.200.21.82/NewsServer/NGNSHelper/GetNewsContent.do?reqid=2002j&newsid={}&lang=TC
@@ -58,7 +58,7 @@
             Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
             Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
 
-#### article retrival schedule for update_scheduler.py
+# article retrival schedule for update_scheduler.py
         financial_news:  
             Dayback_minutes: '60'
             day_of_week: mon-fri
@@ -73,9 +73,19 @@
 
 
 
-### 4.2. Direct run command : 
-     python3.7  /opt/etnet/app2app/text_processing/theme_articles_mapping/api_scheduler.py
-     python3.7   <folder path>/text_processing/theme_articles_mapping/api_scheduler.py
+#  Direct run command : 
+###  etnet financial news data retrival
+     python3.7  /opt/etnet/nlp_preprocessing/financial_news/ETL/update_scheduler.py
+
+###  lifestyle articles data retrival
+     python3.7  /opt/etnet/nlp_preprocessing/lifestyle/ETL/update_scheduler.py
+
+###  etnet financial news NLP application
+     python3.7  /opt/etnet/nlp_preprocessing/financial_news/output_API/vec_scheduler.py
+     
+###  etnet financial news data retrival
+     python3.7  /opt/etnet/nlp_preprocessing/lifestyle/output_API/vec_scheduler.py
+
 
 ### 4.3.Service run command
 #### 4.3.1   create and edit “app2app-theme-mapping.service” script
