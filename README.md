@@ -14,7 +14,23 @@
 - [nlp_backend_engine.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/nlp_backend_engine.py)
 - [tools.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/tools.py) and [sql_db.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/sql_db.py)  
 
- 
+
+
+## Structure of financial_news and lifestyle module
+    - ETL
+         input_api.py  (structure requests function of external APIs in python scope)
+         sql_query.py (contains object-oriented (OOP) data model structure of data incoming from external APIs)
+         update_query.py ( contains tables' structure and relationship of mysql db in term of python scope)
+         update_scheduler.py  ( contains data-fetch functions of external APIs and Data I/O functions between modules and SQLDB )
+         utils.py  ( contains data-fetch functions of external APIs and Data I/O functions between modules and SQLDB )         
+
+    - output_API
+         nlp_handle.py  (structure requests function of external APIs in python scope)
+         vec_scheduler.py (contains object-oriented (OOP) data model structure of data incoming from external APIs)
+
+         
+         
+         
 # 1. Data Retrieval (schedulers)
 
 **Pre-requisite procedures**: connection and configuration of SQLDB
