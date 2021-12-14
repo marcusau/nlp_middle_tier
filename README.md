@@ -87,17 +87,25 @@
      python3.7  /opt/etnet/nlp_preprocessing/lifestyle/output_API/vec_scheduler.py
 
 
-### 4.3.Service run command
-#### 4.3.1   create and edit “app2app-theme-mapping.service” script
-     vim /opt/etnet/scripts/ app2app-theme-mapping.service
-![](demo_configs/app2app_theme_mapping.png)     
+### Service run command
+#### create service script in directory : /usr/lib/systemd/system
+
+![](pic/service_scripts.JPG)
+
+###  etnet financial news data retrival
+     systemctl start financial_news_ETL.service
+
+###  lifestyle articles data retrival
+     systemctl start lifestyle_ETL.service
+
+###  etnet financial news NLP application
+     systemctl start financial_news_vectorizer.service
+     
+###  etnet financial news data retrival
+     systemctl start lifestyle_vectorizer.service
+
 Note: mainly input “direct run command” in between start) and exit $?
 
-#### 4.3.2. create and edit “app2app-theme-mapping.service” in “/usr/lib/systemd/system/” folder
-     vim /usr/lib/systemd/system/ app2app-theme-mapping.service 
-![](demo_configs/app2app_theme_mapping_service.png)   
-Note: mainly paste the directory of “app2app-theme-mapping.service” of step2.1 into the .service file
 
 
-#### 4.3.3  run the .service in the background with “systemctl start” command
-     systemctl start app2app-theme-mapping.service
+
