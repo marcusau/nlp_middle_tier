@@ -58,7 +58,7 @@
             Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
             Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
 
-# article retrival schedule for update_scheduler.py
+# article retrival schedule for update_scheduler.py in [sche_Config.yaml](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/Config/yamls/sche_Config.yaml)
         financial_news:  
             Dayback_minutes: '60'
             day_of_week: mon-fri
