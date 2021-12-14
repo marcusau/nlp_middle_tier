@@ -83,7 +83,7 @@
 ###  etnet financial news NLP application
      python3.7  /opt/etnet/nlp_preprocessing/financial_news/output_API/vec_scheduler.py
      
-###  etnet financial news data retrival
+###  lifestyle articles NLP application
      python3.7  /opt/etnet/nlp_preprocessing/lifestyle/output_API/vec_scheduler.py
 
 
@@ -101,7 +101,7 @@
 ###  etnet financial news NLP application
      systemctl start financial_news_vectorizer.service
      
-###  etnet financial news data retrival
+###  lifestyle articles NLP application
      systemctl start lifestyle_vectorizer.service
 
 Note: mainly input “direct run command” in between start) and exit $?
