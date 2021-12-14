@@ -118,27 +118,24 @@ Note: mainly input “direct run command” in between start) and exit $?
 ![](pic/ner_scan.JPG)
 
 
-#### 2. pyflashtext instantiation
+#### 2. pyflashtext instantiation  assign scores based on headine and content
 ![](pic/pyflashtext.JPG)
-
-
-#### 3. assign scores based on headine and content
 ![](pic/ner_score_headline_content.JPG)
 
 
-#### 4. assign scores based on name entity type
+#### 3. assign scores based on name entity type
 ![](pic/ner_score.JPG)
 
 
-#### 5. Store four types of scores in single array for each vocabulary
+#### 4. Store four types of scores in single array for each vocabulary
 ![](pic/four_scores.JPG)
 
 
-#### 6. Using multiple criteria sorting algorithm to calculate final score of each vocabulary
+#### 5. Using multiple criteria sorting algorithm to calculate final score of each vocabulary
 ![](pic/multi_criteria_scoring.JPG)
 
 
-#### 7. Remove duplicated vocabularies in word list by fuzz logic and semantic meaning (word2vec)
+#### 6. Remove duplicated vocabularies in word list by fuzz logic and semantic meaning (word2vec)
 ![](pic/dedupe_words.JPG)
 
 
