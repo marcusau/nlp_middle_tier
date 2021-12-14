@@ -1,7 +1,7 @@
 # nlp_middle_tier
 
 - Server IP: 10.200.23.42 (UAT)
-- 
+- Script directory:  /opt/etnet/nlp_preprocessing
 
 # NLP workflow
 ![](pic/nlp_workflow.jpg)
@@ -18,52 +18,60 @@
 
 ## Structure of financial_news and lifestyle module
     - ETL
-         input_api.py  (structure requests function of external APIs in python scope)
-         sql_query.py (contains object-oriented (OOP) data model structure of data incoming from external APIs)
-         update_query.py ( contains tables' structure and relationship of mysql db in term of python scope)
-         update_scheduler.py  ( contains data-fetch functions of external APIs and Data I/O functions between modules and SQLDB )
-         utils.py  ( contains data-fetch functions of external APIs and Data I/O functions between modules and SQLDB )         
+         input_api.py  (provide in-built functions to call external API for data retrival)
+         sql_query.py (provide python-based CRUD functions to communicate with SQL database)
+         update_query.py (provide in-built functions for data cleaning and data preprocessing and utilize the function in sql_query.py to complete the workflow of data retrival)
+         update_scheduler.py  (set schedule and run at the background to run functions in update_query.py at indicated time interval)
+         utils.py  (contains supplementary functions to facilitate data cleaning)         
 
     - output_API
-         nlp_handle.py  (structure requests function of external APIs in python scope)
-         vec_scheduler.py (contains object-oriented (OOP) data model structure of data incoming from external APIs)
+         nlp_handle.py  (contains in-built function to calculate scores of keywords and provide complete function to vectorize documents)
+         vec_scheduler.py (set schedule and run at the background to perform NLP functions in nlp_handle.py at indicated time interval)
 
          
          
          
-# 1. Data Retrieval (schedulers)
 
-**Pre-requisite procedures**: connection and configuration of SQLDB
-
-###  Structure of data source folders: 
-- [news folder](https://github.com/etnetapp-dev/app2app_nlp/tree/master/data_source/news) 
-- [lifestyle folder](https://github.com/etnetapp-dev/app2app_nlp/tree/master/data_source/lifestyle) 
-- [stockNames](https://github.com/etnetapp-dev/app2app_nlp/tree/master/data_source/stocknames) 
-- [theme](https://github.com/etnetapp-dev/app2app_nlp/tree/master/data_source/theme) 
-
-#### Each of data source folders contain four key scripts:
-    - source_api.py  (structure requests function of external APIs in python scope)
-    - schema.py (contains object-oriented (OOP) data model structure of data incoming from external APIs)
-    - db_table.py ( contains tables' structure and relationship of mysql db in term of python scope)
-    - CRUD.py  ( contains data-fetch functions of external APIs and Data I/O functions between modules and SQLDB )
-
-#### External APIs of data: all are stored in [data_source.yaml](https://github.com/etnetapp-dev/app2app_nlp/blob/master/config/data_source.yaml)
+#### External APIs of data: all are stored in [InputAPI_Config.yaml](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/Config/yamls/InputAPI_Config.yaml)
     news:
-        Content   : http://10.1.8.51/NewsServer/GetNewsContent.do
-        Thumbnail : https://oapi2u.etnet.com.hk/NewsThumbnails/embed/GetNews.do
+        content:
+            byID: http://10.200.21.82/NewsServer/NGNSHelper/GetNewsContent.do?reqid=2002j&newsid={}&lang=TC
+        Thumbnail:
+            byTime: http://10.200.23.218/NewsThumbnails/embed/GetNews.do?reqid=2000j&lang=TC&type=N%7CF%7CC&newsdatefrom={}&newsdateto={}&updonfrom={}&updonto={}&packagecd=FV32&limitno={}
+            byID : http://10.200.23.218/NewsThumbnails/embed/GetNews.do?reqid=2000j&lang=TC&type=N%7CF%7CC&newsid={}
        
-     lifestyle:
-         article  : http://www.etnet.com.hk/apps/etnetapp/api/get_columns_data.php?type=latest
-         category : http://www.etnet.com.hk/apps/etnetapp/api/get_columns_data.php?type=catinfo
-         section  : http://www.etnet.com.hk/apps/etnetapp/api/get_columns_data.php?type=menu
+    lifestyle:
+        articles: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=latest
+        category: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=catinfo
+        single_article: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=art&id=
+        master: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?
+        section: http://10.200.20.9/apps/etnetapp/api/get_columns_data.php?type=menu
        
-     stocknames   : http://10.1.8.158/StreamServer/SortSearchServlet?reqID=6&category={}&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,{}
-     themenames   : http://10.1.8.10:5001/app2app/themedetails  
-> note: for external API of themenames, the pre-requisite is the kick-start of running of theme_details.py from   [app2app_web module](https://github.com/etnetapp-dev/app2app_web)
+    stocknames  
+        HK:
+            Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=1&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
+            Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=1&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
+        Shanghai:
+            Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=9&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
+            Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=9&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
+        Shenzhen:
+            Chi: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,2
+            Eng: http://10.200.22.175/StreamServer/SortSearchServlet?reqID=6&category=11&sortFieldID=1&sort=A&from=0&size=5000&customFields=1,4
+
+#### article retrival schedule for update_scheduler.py
+        financial_news:  
+            Dayback_minutes: '60'
+            day_of_week: mon-fri
+            hour: 07-21
+            minute: '*/1'
+        lifestyle:
+            Dayback_minutes: '120'
+            day_of_week: mon-sun
+            hour: 08-21
+            minute: '*/5'
 
 
 
-Script directory in development server:  /opt/etnet/app2app/text_processing/theme_articles_mapping/
 
 ### 4.2. Direct run command : 
      python3.7  /opt/etnet/app2app/text_processing/theme_articles_mapping/api_scheduler.py
