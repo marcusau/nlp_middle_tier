@@ -111,31 +111,34 @@ Note: mainly input “direct run command” in between start) and exit $?
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# ner_scan
+
+# Steps of keywords extraction and keyword scoring
+
+#### 1.ner_scan
 ![](pic/ner_scan.JPG)
 
 
-# pyflashtext instantiation
+#### 2. pyflashtext instantiation
 ![](pic/pyflashtext.JPG)
 
 
-# assign scores based on headine and content
+#### 3. assign scores based on headine and content
 ![](pic/ner_score_headline_content.JPG)
 
 
-# assign scores based on name entity type
+#### 4. assign scores based on name entity type
 ![](pic/ner_score.JPG)
 
 
-# Store four types of scores in single array for each vocabulary
+#### 5. Store four types of scores in single array for each vocabulary
 ![](pic/four_scores.JPG)
 
 
-# Using multiple criteria sorting algorithm to calculate final score of each vocabulary
+#### 6. Using multiple criteria sorting algorithm to calculate final score of each vocabulary
 ![](pic/multi_criteria_scoring.JPG)
 
 
-# Remove duplicated vocabularies in word list by fuzz logic and semantic meaning (word2vec)
+#### 7. Remove duplicated vocabularies in word list by fuzz logic and semantic meaning (word2vec)
 ![](pic/dedupe_words.JPG)
 
 
