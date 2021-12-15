@@ -6,6 +6,7 @@
 # NLP workflow
 ![](pic/nlp_workflow.jpg)
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # structure of project
 - [Config](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/Config) - stores configuation of the project in [yaml files](https://github.com/etnetapp-dev/nlp_middle_tier/tree/master/Config/yamls) and contains scripts to convert configuration into reusable python objects.
@@ -15,6 +16,7 @@
 - [tools.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/tools.py) and [sql_db.py](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/sql_db.py) - provides supplemental functions on data preprocessing and set up connection between python server with SQL database. 
 
 
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Structure of financial_news and lifestyle module
     - ETL
@@ -29,7 +31,7 @@
          vec_scheduler.py (set schedule and run at the background to perform NLP functions in nlp_handle.py at indicated time interval)
 
          
-         
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------         
          
 
 # External APIs of data: all are stored in [InputAPI_Config.yaml](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/Config/yamls/InputAPI_Config.yaml)
@@ -71,7 +73,7 @@
             minute: '*/5'
 
 
-
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 #  Direct run command : 
 ###  etnet financial news data retrival
@@ -107,5 +109,33 @@
 Note: mainly input “direct run command” in between start) and exit $?
 
 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Steps of keywords extraction and keyword scoring
+
+#### 1.ner_scan
+![](pic/ner_scan.JPG)
+
+
+#### 2. pyflashtext instantiation  assign scores based on headine and content
+![](pic/pyflashtext.JPG)
+![](pic/ner_score_headline_content.JPG)
+
+
+#### 3. assign scores based on name entity type
+![](pic/ner_score.JPG)
+
+
+#### 4. Store four types of scores in single array for each vocabulary
+![](pic/four_scores.JPG)
+
+
+#### 5. Using multiple criteria sorting algorithm to calculate final score of each vocabulary
+![](pic/multi_criteria_scoring.JPG)
+
+
+#### 6. Remove duplicated vocabularies in word list by fuzz logic and semantic meaning (word2vec)
+![](pic/dedupe_words.JPG)
 
 
