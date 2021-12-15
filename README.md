@@ -4,13 +4,7 @@
 - Script directory:  /opt/etnet/nlp_preprocessing
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Workflow of NLP applications
-![](pic/nlp_workflow.jpg)
-
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-# Workflow of NLP middle tier
+# Workflow of NLP middle tier and its relationship with NLP backend
 ![](pic/nlp_middle_tier_workflow.jpg)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -38,12 +32,12 @@
          vec_scheduler.py (set schedule and run at the background to perform NLP functions in nlp_handle.py at indicated time interval)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Workflow of ETL module
+# Workflow of ETL module and its relationship with other modules
 ![](pic/ETL_workflow.jpg)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-# Workflow of Output API module
+# Workflow of Output API module and its relationship with other modules
 ![](pic/output_API_workflow.jpg)
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------         
