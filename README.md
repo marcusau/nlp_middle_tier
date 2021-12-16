@@ -130,9 +130,12 @@ Note: mainly input “direct run command” in between start) and exit $?
 3. Assign four scores to array. Each array represents one vocabulary. Then, use the Technique for the Order of Prioritisation by Similarity to Ideal Solution (TOPSIS) algorithm from the python open-library, [multi-criteria decision-making (pyMCDM)](https://gitlab.com/shekhand/mcda) to carry out multi-criteria sorting and calculate aggregate score of each vocabulary.
 4. Use the fuzz logic and semantic relationship of word2vec model from [NLP backend API](https://github.com/etnetapp-dev/nlp_backend)  to remove vocabularies with close semantic meaning from the keyword list.
 
-#### vocabulary scores based on name entity type
-![](pic/ner_score.JPG)
+## Weights of each score critera when calculating aggregrate scores of vocabulary in [NLP_output.yaml](https://github.com/etnetapp-dev/nlp_middle_tier/blob/master/Config/yamls/NLP_output.yaml)
+### News articles
+![](pic/sorting_ner_criteria_news.JPG)
 
+### Lifestyle articles
+![](pic/sorting_ner_criteria_lifestyle.JPG)
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
