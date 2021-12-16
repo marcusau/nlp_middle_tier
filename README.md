@@ -120,31 +120,19 @@ Note: mainly input “direct run command” in between start) and exit $?
 
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# keywords scoring system
+1. fetch vocabularies with corresponding Name Entities from headline and content (for lifestyle: headline, introduction and content)
+2. assign four type of scores to each vocabulary including:
+      - word length (the longer, the higher score)
+      - importance ranking of Name Entity type (e.g. FIN and LAW has the highest score, max 24)
+      - headline  scores (If vocabulary is located in headline, assign 1 score, otherwise 0 score
+      - content scores (If vocabulary is in content, assign score based on this equation, 1- span/total length of content. The lower the span, the higher socre)
+3. Assign four scores to array. Each array represents one vocabulary. Then, use the Technique for the Order of Prioritisation by Similarity to Ideal Solution (TOPSIS) algorithm from the python open-library, [multi-criteria decision-making (pyMCDM)](https://gitlab.com/shekhand/mcda) to carry out multi-criteria sorting and calculate aggregate score of each vocabulary.
+4. Use the fuzz logic and semantic relationship of word2vec model from [NLP backend API](https://github.com/etnetapp-dev/nlp_backend)  to remove vocabularies with close semantic meaning from the keyword list.
 
-# Steps of keywords extraction and keyword scoring
-
-#### 1.ner_scan
-![](pic/ner_scan.JPG)
-
-
-#### 2. pyflashtext instantiation  assign scores based on headine and content
-![](pic/pyflashtext.JPG)
-![](pic/ner_score_headline_content.JPG)
-
-
-#### 3. assign scores based on name entity type
+#### vocabulary scores based on name entity type
 ![](pic/ner_score.JPG)
 
-
-#### 4. Store four types of scores in single array for each vocabulary
-![](pic/four_scores.JPG)
-
-
-#### 5. Using multiple criteria sorting algorithm to calculate final score of each vocabulary
-![](pic/multi_criteria_scoring.JPG)
-
-
-#### 6. Remove duplicated vocabularies in word list by fuzz logic and semantic meaning (word2vec)
-![](pic/dedupe_words.JPG)
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
